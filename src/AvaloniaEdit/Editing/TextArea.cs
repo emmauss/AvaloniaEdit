@@ -74,6 +74,9 @@ namespace AvaloniaEdit.Editing
         {
             AddHandler(KeyDownEvent, OnPreviewKeyDown, RoutingStrategies.Tunnel);
             AddHandler(KeyUpEvent, OnPreviewKeyUp, RoutingStrategies.Tunnel);
+            
+            var contextMenu = new ContextMenu();
+            ContextMenu = contextMenu;
         }
 
         /// <summary>

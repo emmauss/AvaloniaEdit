@@ -411,7 +411,6 @@ namespace AvaloniaEdit.Editing
                             _mode = SelectionMode.PossibleDragStart;
                             _possibleDragStartMousePos = e.GetPosition(TextArea);
                         }
-                        e.Handled = true;
                         return;
                     }
                 }
@@ -494,7 +493,6 @@ namespace AvaloniaEdit.Editing
                         }
                     }
                 }
-				e.Handled = true;
 			}
 		}
         #endregion
@@ -699,11 +697,11 @@ namespace AvaloniaEdit.Editing
 
         #region MouseLeftButtonUp
 
-        private void TextArea_MouseLeftButtonUp(object sender, PointerEventArgs e)
+        private void TextArea_MouseLeftButtonUp(object sender, PointerReleasedEventArgs e)
         {
-            if (_mode == SelectionMode.None || e.Handled)
+            if (_mode == SelectionMode.None || e.Handled || e.MouseButton != MouseButton.Left)
                 return;
-            e.Handled = true;
+           // e.Handled = true;
             switch (_mode)
             {
                 case SelectionMode.PossibleDragStart:
